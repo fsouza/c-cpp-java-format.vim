@@ -14,6 +14,6 @@ open TMP, $filename;
 close(TMP);
 
 $source = join('', @lines);
-$source =~ s/(\s){2,}$//m;
+$source =~ s/(\s)+$//gm;
 $source =~ s/(\n}\n)([a-z])/$1\n$2/g;
 print $source;
