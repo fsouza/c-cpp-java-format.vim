@@ -1,3 +1,9 @@
 Very basic c configuration for vim.
 
 If you like to use "powerful" vim, please try https://github.com/vim-scripts/c.vim.
+
+Setup
+
+Make sure you add the bin directory to your PATH. Add the following line to your .vimrc:
+
+  let $PATH .= ":<path_to_the_bin_directory>"
