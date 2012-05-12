@@ -10,6 +10,7 @@ close(TMP);
 
 system("indent", $filename);
 system("indent", $filename);
+system("rm", "-f", "formatctmpfile21311.c.BAK");
 open TMP, $filename;
 @lines = <TMP>;
 close(TMP);
