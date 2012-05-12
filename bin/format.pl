@@ -9,11 +9,11 @@ print TMP $source;
 close(TMP);
 
 system("indent", $filename);
+system("indent", $filename);
 open TMP, $filename;
 @lines = <TMP>;
 close(TMP);
 
 $source = join('', @lines);
-$source =~ s/(\s){2,}$//gm;
 $source =~ s/(\n}\n)([a-z])/$1\n$2/g;
 print $source;
