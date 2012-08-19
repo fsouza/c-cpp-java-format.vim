@@ -16,6 +16,7 @@ open TMP, $filename;
 close(TMP);
 
 $source = join('', @lines);
+$source =~ s/(struct.*)\s{\n/$1\n{\n/g;
 $source =~ s/(\n};?\n)([a-z])/$1\n$2/g;
 $source =~ s/([^\s])\s?\|\s?([^\s])/$1|$2/g;
 print $source;
