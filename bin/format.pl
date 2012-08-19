@@ -8,15 +8,16 @@ open TMP, '>', $filename;
 print TMP $source;
 close(TMP);
 
-system("indent", $filename);
-system("indent", $filename);
-system("rm", "-f", "formatctmpfile21311.c.BAK");
+system("astyle", $filename, "--style=kr", "--indent=tab", "--quiet");
 open TMP, $filename;
 @lines = <TMP>;
 close(TMP);
 
+foreach (@lines) {
+    $_ =~ s/^(\s*)([\w]+\s?\*?)\s([\w]+)\s?(\(.*\)\n)$/$1$2\n$3$4/;
+    $_ =~ s/^(\s*)(struct.*)\s{\n$/$1$2\n{\n/g;
+    $_ =~ s/([^\s])\s?\|\s?([^\s])/$1|$2/g;
+}
 $source = join('', @lines);
-$source =~ s/(struct.*)\s{\n/$1\n{\n/g;
 $source =~ s/(\n};?\n)([a-z])/$1\n$2/g;
-$source =~ s/([^\s])\s?\|\s?([^\s])/$1|$2/g;
 print $source;
