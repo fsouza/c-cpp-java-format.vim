@@ -17,6 +17,7 @@ foreach (@lines) {
     $_ =~ s/^(\s*)([\w]+\s?\*?)\s([\w]+)\s?(\(.*\)\n)$/$1$2\n$3$4/;
     $_ =~ s/^(\s*)(struct.*)\s{\n$/$1$2\n{\n/g;
     $_ =~ s/([^\s])\s?\|\s?([^\s])/$1|$2/g;
+    $_ =~ s/(for|if|while)\s+\(/$1(/g;
 }
 $source = join('', @lines);
 $source =~ s/(\n};?\n)([a-z])/$1\n$2/g;
