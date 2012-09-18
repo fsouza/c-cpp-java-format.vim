@@ -1,9 +1,13 @@
-Very basic c configuration for vim.
+C, C++ and Java formatting on Vim
 
-If you like to use "powerful" vim, please try https://github.com/vim-scripts/c.vim.
+If you like to use "powerful" vim, please try
+https://github.com/vim-scripts/c.vim.
 
 Setup
 
-Make sure you add the bin directory to your PATH. Add the following line to your .vimrc:
+First, you need to install astyle: http://astyle.sf.net.
+
+After installing astyle, make sure you add the bin directory to your PATH. Add
+the following line to your .vimrc:
 
   let $PATH .= ":<path_to_the_bin_directory>"
