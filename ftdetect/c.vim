@@ -1,1 +1,1 @@
-autocmd FileType c setlocal equalprg=format.pl
+autocmd FileType c setlocal equalprg=format-c.pl

@@ -1,1 +1,1 @@
-autocmd FileType cpp setlocal equalprg=format.pl
+autocmd FileType cpp setlocal equalprg=format-c.pl
