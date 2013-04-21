@@ -5,6 +5,7 @@
 # license that can be found in the LICENSE file.
 
 expected="#include <stdio.h>
+#include <stdlib.h>
 
 struct Person
 {
@@ -18,6 +19,12 @@ typedef struct
 {
 	char *name;
 } car;
+
+int
+doSomething(char *name)
+{
+	return 1;
+}
 
 int
 main(void)
@@ -37,6 +44,7 @@ main(void)
 
 got=`bin/format-c.pl <<END
 #include <stdio.h>
+#include <stdlib.h>
 
 struct Person {
 	char *name;
@@ -48,6 +56,10 @@ typedef struct Person Person;
 typedef struct {
 	char *name;
 } car;
+
+int doSomething(char * name){
+	return 1;
+}
 
 int main(void) {
 	union {
