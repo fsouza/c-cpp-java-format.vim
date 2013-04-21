@@ -62,7 +62,6 @@ typedef struct Person Person;
 typedef struct {
 	char *name;
 } car;
-
 int doSomething(char * name){
 	return 1;
 }
@@ -70,7 +69,6 @@ int doSomething(char * name){
 void * alloc(int bytes) {
 	return malloc(bytes);
 }
-
 int main(void) {
 	union {
 		int d;

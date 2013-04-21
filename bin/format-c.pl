@@ -25,4 +25,6 @@ foreach (@lines) {
 	$_ =~ s/(for|if|while)\s+\(/$1(/g;
 	$_ =~ s/\s+\n/\n/g;
 }
-print join("", @lines);
+$source = join('', @lines);
+$source =~ s/(\n}(;|\s[a-zA-Z0-9-_]+;)?\n)([a-zA-Z])/$1\n$3/g;
+print $source;
