@@ -12,18 +12,17 @@ open TMP, '>', $filename;
 print TMP $source;
 close(TMP);
 
-system("astyle", $filename, "--style=kr", "--indent=tab", "--quiet", "--add-brackets");
+system("astyle", $filename, "--style=kr", "--indent=tab", "--quiet", "--add-brackets", "--align-pointer=name", "--align-reference=name");
 open TMP, $filename;
 @lines = <TMP>;
 close(TMP);
 
 foreach (@lines) {
-	$_ =~ s/^(\s*)([a-zA-Z0-9_\s]+\s?\*?)\s([\w]+)\s?(\(.*\)\n)$/$1$2\n$3$4/;
+	$_ =~ s/^(\s*)([a-zA-Z0-9_\s]+\s?(\s|\*))([\w]+)\s?(\(.*\)\n)$/$1$2\n$4$5/;
 	$_ =~ s/^(\s*)((typedef )?)(struct.*|static struct|enum.*|union.*)\s{\n$/$1$2$4\n$1\{\n/g;
 	$_ =~ s/([^\s])\s?\|\s?([^\s])/$1|$2/g;
 	$_ =~ s/^(\s+)(#)/$2/;
 	$_ =~ s/(for|if|while)\s+\(/$1(/g;
+	$_ =~ s/\s+\n/\n/g;
 }
-$source = join('', @lines);
-$source =~ s/(\n};?\n)([a-z])/$1\n$2/g;
-print $source;
+print join("", @lines);

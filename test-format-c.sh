@@ -26,6 +26,12 @@ doSomething(char *name)
 	return 1;
 }
 
+void *
+alloc(int bytes)
+{
+	return malloc(bytes);
+}
+
 int
 main(void)
 {
@@ -59,6 +65,10 @@ typedef struct {
 
 int doSomething(char * name){
 	return 1;
+}
+
+void * alloc(int bytes) {
+	return malloc(bytes);
 }
 
 int main(void) {
