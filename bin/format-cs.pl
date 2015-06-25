@@ -12,7 +12,7 @@ open TMP, '>', $filename;
 print TMP $source;
 close(TMP);
 
-system("astyle", $filename, "--mode=cs", "--style=allman", "--add-brackets", "--quiet");
+system("astyle", $filename, "--mode=cs", "--style=allman", "--indent-namespaces", "--add-brackets", "--quiet");
 open TMP, $filename;
 @lines = <TMP>;
 close(TMP);
