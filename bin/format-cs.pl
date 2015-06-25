@@ -16,8 +16,5 @@ system("astyle", $filename, "--mode=cs", "--style=allman", "--indent-namespaces"
 open TMP, $filename;
 @lines = <TMP>;
 close(TMP);
-foreach (@lines) {
-	$_ =~ s/(for|if|while)\s+\(/$1(/g;
-}
 $source = join('', @lines);
 print $source;
